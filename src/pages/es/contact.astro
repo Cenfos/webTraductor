@@ -1,0 +1,19 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LanguageSelector from '../../components/LanguageSelector.astro';
+import translations from '../../translations/es.json';
+
+import ContactForm from '../../components/ContactForm.astro';
+const t = translations.home;
+const title = t.title || "InterpreterStrike";
+---
+
+<Layout title={title} t={t}>
+
+    <h1>
+        Esto es una página de contacto.
+    </h1>
+
+    <ContactForm />
+    
+</Layout>

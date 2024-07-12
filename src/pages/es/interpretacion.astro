@@ -1,0 +1,20 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LanguageSelector from '../../components/LanguageSelector.astro';
+import translations from '../../translations/es.json';
+
+const t = translations.home;
+const title = t.title || "InterpreterStrike";
+---
+
+<Layout title={title} t={t}>
+
+
+    <h1>
+        Esta página explica los modos de interpretación.<br><br>
+        - simultánea<br>
+        - consecutiva<br>
+        - susurrada<br>
+        - de enlace<br>
+    </h1>
+</Layout>

@@ -1,0 +1,44 @@
+---
+export interface CardProps {
+  href: string;
+  title: string;
+  body: string;
+}
+
+const { href, title, body } = Astro.props;
+---
+
+<a class="card" href={href}>
+  <h3>{title}</h3>
+  <p>{body}</p>
+</a>
+
+<style scoped>
+  .card {
+    display: block;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none; /* Asegura que el enlace no tenga subrayado */
+    color: inherit; /* Hereda el color del texto del elemento padre */
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: var(--accent-dark);
+  }
+
+  p {
+    font-size: 1rem;
+    color: #666;
+  }
+</style>

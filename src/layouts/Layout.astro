@@ -1,0 +1,52 @@
+---
+import Header from '../components/Header.astro';
+import LanguageSelector from '../components/LanguageSelector.astro';
+
+const { title, t } = Astro.props;
+---
+<astro>
+	<!DOCTYPE html>
+	<html lang={t.lang || 'en'}>
+	<head>
+	  <meta charset="UTF-8" />
+	  <meta http-equiv="refresh" content="0;url=/en/" />
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	  <title>{title}</title>
+	  
+	</head>
+	<body>
+	  <Header t={t.header} />
+	 
+	  <LanguageSelector />
+	  <slot />
+	  
+	<script src="/scripts/darkMode.js" defer></script>
+	</body>
+	</html>
+	
+	<style is:global>
+	  /* Estilos globales */
+	  body {
+		font-family: Arial, sans-serif;
+		margin: 0;
+		padding: 0;
+		background-color: #f2f2f2;
+	  }
+	</style>
+	
+
+	</astro>
+	
+
+
+<style is:global>
+  /* Estilos globales */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+  }
+</style>
+
+</astro>

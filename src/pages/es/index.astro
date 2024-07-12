@@ -1,0 +1,144 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Card from '../../components/Card.astro';
+import LanguageSelector from '../../components/LanguageSelector.astro';
+import translations from '../../translations/es.json';
+
+const t = translations.home;
+const title = t?.title || "InterpreterStrike";
+
+const currentPath = Astro.url.pathname;
+const spanishPath = currentPath.startsWith('/en') ? currentPath.replace('/en', '/es') : '/es' + currentPath;
+const englishPath = currentPath.startsWith('/es') ? currentPath.replace('/es', '/en') : '/en' + currentPath;
+---
+
+<Layout title={title} t={t}>
+  <main>
+    <h1><span class="text-gradient">{title}</span></h1>
+    <p class="instructions">
+      {t?.Welcome}
+    </p>
+    <ul role="list" class="link-card-grid">
+      <Card
+        href="https://docs.astro.build/"
+        title={t?.documentation?.title}
+        body={t?.documentation?.body}
+      />
+      <Card
+        href="https://astro.build/integrations/"
+        title={t?.integrations?.title}
+        body={t?.integrations?.body}
+      />
+      <Card
+        href="https://astro.build/themes/"
+        title={t?.themes?.title}
+        body={t?.themes?.body}
+      />
+      <Card
+        href="https://astro.build/chat/"
+        title={t?.community?.title}
+        body={t?.community?.body}
+      />
+    </ul>
+    <div class="language-selector">
+      <!-- Botones de idioma -->
+      <a class="language-button" href={spanishPath}>Español</a>
+      <a class="language-button" href={englishPath}>English</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 2rem;
+    max-width: 1200px;
+    color: #333;
+    font-size: 18px;
+    line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.5em;
+  }
+
+  .text-gradient {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
+
+  .instructions {
+    margin-bottom: 2rem;
+    border: 1px solid rgba(var(--accent-light), 25%);
+    background: #f9f9f9;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .link-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .link-card-grid a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .link-card-grid .card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .link-card-grid .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .link-card-grid .card h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: var(--accent-dark);
+  }
+
+  .link-card-grid .card p {
+    font-size: 1rem;
+    color: #666;
+  }
+
+  .language-selector {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .language-button {
+    background-color: transparent;
+    border: 1px solid #333;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .language-button:hover {
+    background-color: #f0f0f0;
+  }
+</style>

@@ -1,0 +1,14 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LanguageSelector from '../../components/LanguageSelector.astro';
+import translations from '../../translations/es.json';
+
+
+const t = translations.home;
+const title = t.title || "InterpreterStrike";
+---
+
+<Layout title={title} t={t}>
+
+    <h1>This page explains the translation services.</h1>
+</Layout>

@@ -1,0 +1,19 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LanguageSelector from '../../components/LanguageSelector.astro';
+import translations from '../../translations/en.json'; // Cambia a en.json
+
+import ContactForm from '../../components/ContactForm.astro';
+const t = translations.contact; // Cambia a la sección de contacto
+const title = t.title || "Contact Us"; // Título por defecto
+---
+
+<Layout title={title} t={t}>
+
+    <h1>
+        This is a contact page.
+    </h1>
+
+    <ContactForm />
+    
+</Layout>

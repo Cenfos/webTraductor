@@ -1,0 +1,17 @@
+import Layout from '../../layouts/Layout.astro';
+import LanguageSelector from '../../components/LanguageSelector.astro';
+import translations from '../../translations/en.json';
+
+const t = translations.interpretation;
+const title = t.title || "InterpreterStrike";
+---
+
+<Layout title={title} t={t}>
+    <h1>
+        This page explains the modes of interpretation.<br><br>
+        - Simultaneous<br>
+        - Consecutive<br>
+        - Whispered<br>
+        - Liaison<br>
+    </h1>
+</Layout>

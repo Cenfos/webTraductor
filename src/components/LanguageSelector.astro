@@ -1,0 +1,49 @@
+---
+const currentPath = Astro.url.pathname;
+const spanishPath = currentPath.startsWith('/en') ? currentPath.replace('/en', '/es') : '/es' + currentPath;
+const englishPath = currentPath.startsWith('/es') ? currentPath.replace('/es', '/en') : '/en' + currentPath;
+---
+
+<div class="language-selector">
+  <!-- Botones de idioma -->
+  <button class="language-button" onclick="handleSpanishClick(event)">Español</button>
+  <button class="language-button" onclick="handleEnglishClick(event)">English</button>
+</div>
+
+<script is:inline>
+  function handleSpanishClick(event) {
+    event.preventDefault();
+    if (window.location.pathname !== spanishPath) {
+      window.location.href = spanishPath;
+    }
+  }
+
+  function handleEnglishClick(event) {
+    event.preventDefault();
+    if (window.location.pathname !== englishPath) {
+      window.location.href = englishPath;
+    }
+  }
+</script>
+
+<style scoped>
+  .language-selector {
+    display: flex;
+    gap: 10px;
+  }
+
+  .language-button {
+    background-color: transparent;
+    border: none;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+
+  .language-button:hover {
+    background-color: #f0f0f0;
+  }
+</style>

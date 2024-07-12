@@ -1,0 +1,38 @@
+{
+  "home": {
+    "title": "InterpreterStrike",
+    "Welcome": "En InterpreterStrike, nos dedicamos a ofrecer soluciones de traducción e interpretación de alta calidad para satisfacer las necesidades de comunicación de nuestros clientes en un mundo globalizado. Con un equipo de traductores e intérpretes profesionales y especializados en diversos campos, garantizamos precisión, fluidez y adaptación cultural en cada uno de nuestros proyectos. Ya sea que necesites traducir documentos técnicos, legales, comerciales o creativos, o requieras servicios de interpretación simultánea o consecutiva, estamos aquí para ayudarte a superar las barreras del idioma y alcanzar tus objetivos de comunicación de manera efectiva.",
+    "documentation": {
+      "title": "Documentación",
+      "body": "Aprende cómo funciona Astro y explora la documentación oficial de la API."
+    },
+    "integrations": {
+      "title": "Integraciones",
+      "body": "Potencia tu proyecto con nuevos frameworks y bibliotecas."
+    },
+    "themes": {
+      "title": "Temas",
+      "body": "Explora una galaxia de temas de inicio construidos por la comunidad."
+    },
+    "community": {
+      "title": "Comunidad",
+      "body": "Ven y saluda a nuestra increíble comunidad de Discord. ❤️"
+    }
+  },
+  
+    "contact": {
+      "title": "Contacto",
+      "description": "Página de contacto."
+    },
+    "interpretation": {
+      "title": "Modos de interpretación",
+      "description": "Esta página explica los modos de interpretación."
+    }, 
+    "traduccion": {
+      "title": "Modos de traducción",
+      "description": "Esta página explica los modos de traducción."
+    }
+  
+  
+}
+
