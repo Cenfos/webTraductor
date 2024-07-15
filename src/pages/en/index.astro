@@ -1,8 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Card from '../../components/Card.astro';
-import LanguageSelector from '../../components/LanguageSelector.astro';
-import translations from '../../translations/en.json';
+
+import translations from '../../translations/es.json';
 
 const t = translations.home;
 const title = t?.title || "InterpreterStrike";
@@ -15,7 +15,9 @@ const englishPath = currentPath.startsWith('/es') ? currentPath.replace('/es', '
 <Layout title={title} t={t}>
   <main>
     <h1><span class="text-gradient">{title}</span></h1>
-    <p class="instructions">{t?.Welcome}</p>
+    <p class="instructions">
+      {t?.Welcome}
+    </p>
     <ul role="list" class="link-card-grid">
       <Card
         href="https://docs.astro.build/"
@@ -38,11 +40,7 @@ const englishPath = currentPath.startsWith('/es') ? currentPath.replace('/es', '
         body={t?.community?.body}
       />
     </ul>
-    <div class="language-selector">
-      <!-- Botones de idioma -->
-      <a class="language-button" href={spanishPath}>Español</a>
-      <a class="language-button" href={englishPath}>English</a>
-    </div>
+    
   </main>
 </Layout>
 
@@ -108,5 +106,35 @@ const englishPath = currentPath.startsWith('/es') ? currentPath.replace('/es', '
 
   .link-card-grid .card h3 {
     margin-top: 0;
-    font-size:
+    font-size: 1.5rem;
+    color: var(--accent-dark);
   }
+
+  .link-card-grid .card p {
+    font-size: 1rem;
+    color: #666;
+  }
+
+  .language-selector {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .language-button {
+    background-color: transparent;
+    border: 1px solid #333;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .language-button:hover {
+    background-color: #f0f0f0;
+  }
+</style>

@@ -1,52 +1,43 @@
 ---
-import Header from '../components/Header.astro';
-import LanguageSelector from '../components/LanguageSelector.astro';
+import Header from "../components/Header.astro";
 
 const { title, t } = Astro.props;
+const currentPath = Astro.url.pathname;
+const spanishPath = currentPath.startsWith('/en') ? currentPath.replace('/en', '/es') : '/es' + currentPath;
+const englishPath = currentPath.startsWith('/es') ? currentPath.replace('/es', '/en') : '/en' + currentPath;
+const lang = t.lang || "es"; // Establecer español como idioma por defecto
 ---
-<astro>
-	<!DOCTYPE html>
-	<html lang={t.lang || 'en'}>
-	<head>
-	  <meta charset="UTF-8" />
-	  <meta http-equiv="refresh" content="0;url=/en/" />
-	  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	  <title>{title}</title>
-	  
-	</head>
-	<body>
-	  <Header t={t.header} />
-	 
-	  <LanguageSelector />
-	  <slot />
-	  
-	<script src="/scripts/darkMode.js" defer></script>
-	</body>
-	</html>
-	
-	<style is:global>
-	  /* Estilos globales */
-	  body {
-		font-family: Arial, sans-serif;
-		margin: 0;
-		padding: 0;
-		background-color: #f2f2f2;
-	  }
-	</style>
-	
 
-	</astro>
-	
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>{title}</title>
+</head>
+<body>
+  <Header 
+    t={t.header} 
+    currentPath={currentPath} 
+    spanishPath={spanishPath} 
+    englishPath={englishPath} 
 
+  />
+  <slot />
+  <script src="/scripts/darkMode.js" defer></script>
+</body>
+</html>
 
 <style is:global>
-  /* Estilos globales */
   body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f2f2f2;
   }
+  .dark-mode {
+    background-color: #333;
+    color: #f2f2f2;
+  }
 </style>
-
-</astro>

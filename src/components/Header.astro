@@ -1,27 +1,25 @@
 ---
-const currentPath = Astro.url.pathname;
-
+const { currentPath, spanishPath, englishPath, t } = Astro.props;
+import LanguageSelector from "./LanguageSelector.astro";
 ---
 
 <header>
   <div class="logo">
-    
     <span>IP</span>
   </div>
   <button class="menu-toggle" aria-label="Toggle menu">
     &#9776;
   </button>
-  
-
   <nav>
     <ul class="nav-links">
       <li><a href="/">Home</a></li>
-      <li><a href={currentPath.startsWith('/en') ? '/es/traduccion' : '/en/traduccion'}>Traducción</a></li>
-      <li><a href={currentPath.startsWith('/en') ? '/es/interpretacion' : '/en/interpretacion'}>Interpretación</a></li>
-      <li><a href={currentPath.startsWith('/en') ? '/es/contacto' : '/en/contacto'}>Contacto</a></li>
+      <li><a href={currentPath.startsWith('/en') ? spanishPath : '/es/traduccion'}>Traducción</a></li>
+      <li><a href={currentPath.startsWith('/en') ? spanishPath : '/es/interpretacion'}>Interpretación</a></li>
+      <li><a href={currentPath.startsWith('/en') ? spanishPath : '/es/contacto'}>Contacto</a></li>
     </ul>
   </nav>
-  <button class="toggle-dark-mode">🌙</button>
+  <button class="toggle-dark-mode">Toggle Dark Mode</button>
+  <LanguageSelector />
 </header>
 
 <style scoped>
@@ -53,12 +51,12 @@ const currentPath = Astro.url.pathname;
   }
 
   .menu-toggle {
-    display: none; /* Oculta el botón de menu por defecto */
+    display: none;
     font-size: 24px;
     background: none;
     border: none;
     cursor: pointer;
-    order: 3; /* Alinea el botón al final del header */
+    order: 3;
   }
 
   nav ul {
@@ -119,18 +117,46 @@ const currentPath = Astro.url.pathname;
     }
   }
 </style>
-
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
+    const darkModeButton = document.querySelector('.toggle-dark-mode');
+    const languageButtons = document.querySelectorAll('.language-button');
 
     if (menuToggle && navLinks) {
       menuToggle.addEventListener('click', () => {
         navLinks.classList.toggle('show-menu');
       });
     }
+
+    if (darkModeButton) {
+      darkModeButton.addEventListener('click', () => {
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        if (isDarkMode) {
+          document.body.classList.remove('dark-mode');
+          localStorage.setItem('dark-mode', 'false');
+        } else {
+          document.body.classList.add('dark-mode');
+          localStorage.setItem('dark-mode', 'true');
+        }
+      });
+    }
+
+    if (languageButtons.length > 0) {
+      languageButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const path = button.getAttribute('data-path');
+          if (path) {
+            window.location.href = path;
+          }
+        });
+      });
+    }
+
+    // Cargar la preferencia del modo oscuro
+    if (localStorage.getItem('dark-mode') === 'true') {
+      document.body.classList.add('dark-mode');
+    }
   });
 </script>
-
-

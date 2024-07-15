@@ -1,13 +1,15 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import LanguageSelector from '../../components/LanguageSelector.astro';
 import translations from '../../translations/es.json';
-
 import ContactForm from '../../components/ContactForm.astro';
-const t = translations.home;
-const title = t.title || "InterpreterStrike";
----
 
+const t = translations.home;
+const title = t?.title || "InterpreterStrike";
+
+const currentPath = Astro.url.pathname;
+const spanishPath = currentPath.startsWith('/en') ? currentPath.replace('/en', '/es') : '/es' + currentPath;
+const englishPath = currentPath.startsWith('/es') ? currentPath.replace('/es', '/en') : '/en' + currentPath;
+---
 <Layout title={title} t={t}>
 
     <h1>

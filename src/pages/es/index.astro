@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Card from '../../components/Card.astro';
-import LanguageSelector from '../../components/LanguageSelector.astro';
+
 import translations from '../../translations/es.json';
 
 const t = translations.home;
@@ -40,11 +40,7 @@ const englishPath = currentPath.startsWith('/es') ? currentPath.replace('/es', '
         body={t?.community?.body}
       />
     </ul>
-    <div class="language-selector">
-      <!-- Botones de idioma -->
-      <a class="language-button" href={spanishPath}>Español</a>
-      <a class="language-button" href={englishPath}>English</a>
-    </div>
+    
   </main>
 </Layout>
 

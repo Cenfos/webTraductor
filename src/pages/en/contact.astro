@@ -1,17 +1,19 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import LanguageSelector from '../../components/LanguageSelector.astro';
-import translations from '../../translations/en.json'; // Cambia a en.json
-
+import translations from '../../translations/es.json';
 import ContactForm from '../../components/ContactForm.astro';
-const t = translations.contact; // Cambia a la sección de contacto
-const title = t.title || "Contact Us"; // Título por defecto
----
 
+const t = translations.home;
+const title = t?.title || "InterpreterStrike";
+
+const currentPath = Astro.url.pathname;
+const spanishPath = currentPath.startsWith('/en') ? currentPath.replace('/en', '/es') : '/es' + currentPath;
+const englishPath = currentPath.startsWith('/es') ? currentPath.replace('/es', '/en') : '/en' + currentPath;
+---
 <Layout title={title} t={t}>
 
     <h1>
-        This is a contact page.
+        Contact page. 
     </h1>
 
     <ContactForm />
